@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메일 보내기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<main>
+<h1>메일 발송</h1>
+
+<form th:action="@{/index}" method="post">
+    <input type="text" name="address" id="address">
+    <input type="hidden" name="title" value="회원님의 인증번호입니다.">
+    <input type="hidden" name="emailCheckToken" value="">
+    <button data-toggle="modal" data-target="#myModal">메일보내기</button>
+</form>
+<button type="button" id="hello1">안녕</button>
+<!-- The Modal -->
+
+
+</main>
+<div class="modal fade" id="emailButton1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">인증번호 발송</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                이메일을 확인하세요.
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+
+    $(document).ready(function (){
+        $("#hello1").click(function (){
+            $(".modal-body").html($("#address").val());
+            $("#emailButton1").modal();
+        });
+
+    });
+
+</script>
+
+
+</html>
